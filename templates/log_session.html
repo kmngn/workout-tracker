@@ -1,0 +1,88 @@
+<html lang="en">
+<button id="home" type="button" class="button" onclick="window.location.href = '/';" value="Redirect">HOME</button>
+<head>
+    <link href="../static/index.css" rel="stylesheet" media="all"/>
+    <title>Log Session:</title>
+</head>
+<div style="text-align: center">
+    <img src="../static/log%20logo.png" alt="logo" width="450"/>
+</div>
+<form action="" method="POST">
+    <div id="session">
+        {% csrf_token %}
+
+        <div class="form-control">
+            <label>♡ name: </label>
+            {{ session_form.name }}
+        </div>
+        <div class="form-control">
+            <label>♡ date:</label>
+            {{ session_form.date }}
+        </div>
+        <div class="form-control">
+            <label>♡ duration:</label>
+            {{ session_form.duration }} hrs
+        </div>
+        <div class="form-control">
+            -----------------------
+        </div>
+    </div>
+    <div id="form-container">
+        {{ formset.management_form }}
+        {% for form in formset %}
+            <div id="ex-update-form">
+                <div id="test">
+
+                    <label>exercise:</label>
+                    {{ form.ex_name }} <br>
+                    {{ form.id }}
+
+                    {% if form.nested %}
+
+                        {{ form.nested.management_form }}
+                        {{ form.nested.non_form_errors }}
+
+                        {% for nested_form in form.nested.forms %}
+                            {{ nested_form.id }}
+                            <label>weight: </label>
+                            {{ nested_form.ex_weight }}<br>
+                            <label>reps: </label>
+                            {{ nested_form.ex_reps }} <br>
+                        {% endfor %}
+                    </div>
+                </div>
+                    {% endif %}
+        {% endfor %}
+    </div>
+    <div class="form-control">
+        <button type="submit" id="add" class="button"
+                onclick="window.location.href = '{% url 'add_exercise' session_id=session_id %}';" value="Redirect">
+            + exercise
+        </button>
+        <br>
+    </div>
+    <div class="form-control">
+        <br>
+        <button type="submit" class="button ">save session</button>
+    </div>
+</form>
+
+<script>
+    let addButton = document.querySelector("#add")
+    addButton.addEventListener('click', saveSession)
+
+    function saveSession(e) {
+        e.preventDefault()
+
+        let newForm = birdForm[0].cloneNode(true)
+        let formRegex = RegExp(`form-(\\d){1}-`, 'g')
+
+
+        formNum++
+        newForm.innerHTML = newForm.innerHTML.replace(formRegex, `form-${formNum}-`)
+        container.insertBefore(newForm, addButton)
+
+        totalForms.setAttribute('value', `${formNum + 1}`)
+    }
+</script>
+</html>

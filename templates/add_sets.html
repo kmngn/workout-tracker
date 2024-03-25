@@ -1,0 +1,57 @@
+<html lang="en">
+<div id="content">
+    <button type="button" id="home" class="button" onclick="window.location.href = '/';" value="Redirect">HOME</button>
+</div>
+
+<head>
+    <link href="../static/index.css" rel="stylesheet" media="all"/>
+    <title>Log Session:</title>
+</head>
+<img src="../static/add.png" alt="logo" width="320"/><br>
+
+<div style="text-align: center">
+</div>
+<form class="add" action="" method="POST">
+    {% csrf_token %}
+    <div class="form-control">
+        <label>♡</label>
+        {{ exercise.ex_name }}
+    </div>
+    <div id="form-container">
+        {{ formset.management_form }}
+        {% for form in formset %}
+            <div class="ex-form">
+                {{ form.ex_weight }}
+                {{ form.ex_reps }}
+            </div>
+        {% endfor %}
+        <button class="button" id="add-form" type="button">add set</button>
+    </div>
+    <div id="save">
+        <button class="button" type="submit">save</button>
+    </div>
+</form>
+<script>
+    let birdForm = document.querySelectorAll(".ex-form")
+    let container = document.querySelector("#form-container")
+    let addButton = document.querySelector("#add-form")
+    let totalForms = document.querySelector("#id_form-TOTAL_FORMS")
+
+    let formNum = birdForm.length - 1
+    addButton.addEventListener('click', addForm)
+
+    function addForm(e) {
+        e.preventDefault()
+
+        let newForm = birdForm[0].cloneNode(true)
+        let formRegex = RegExp(`form-(\\d){1}-`, 'g')
+
+
+        formNum++
+        newForm.innerHTML = newForm.innerHTML.replace(formRegex, `form-${formNum}-`)
+        container.insertBefore(newForm, addButton)
+
+        totalForms.setAttribute('value', `${formNum + 1}`)
+    }
+</script>
+</html>

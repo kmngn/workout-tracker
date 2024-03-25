@@ -1,0 +1,35 @@
+<html lang="en">
+
+<head>
+    <link href="../static/view.css" rel="stylesheet" media="all"/>
+</head>
+<div id="summary">
+    <button id="home" type="button" class="button" onclick="window.location.href = '/';" value="Redirect">HOME</button>
+    <div id="logo">
+        <img src="../static/sum.png" alt="logo" width="350"/><br>
+    </div>
+    {% csrf_token %}
+    <div id="outside">
+        <img src="../static/paint%20stroke.png" alt="logo" width="350"/>
+        <div id="inside">
+            &#9702;{{ session_data.name }}&#9702;<br>
+            {{ session_data.date }} <br>
+            {{ session_data.duration }} hrs<br>
+        </div>
+    </div>
+</div>
+<div id="empty">
+    <p>this session is empty! add some exercises:</p><br>
+    <button type="submit" id="add" class="button"
+            onclick="window.location.href = '{% url 'add_exercise' session_id=session_id %}';" value="Redirect">
+        + exercise
+    </button>
+
+</div>
+<br>
+<button id="del" type="button" class="button"
+        onclick="window.location.href = '{% url 'session_del' session_id=session_data.id %}';"
+        value="Redirect">delete
+</button>
+
+</html>

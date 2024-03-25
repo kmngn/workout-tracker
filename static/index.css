@@ -1,0 +1,187 @@
+body {
+  text-align: center;
+  margin: auto;
+  font-family: "pixel";
+  background: #A38F8B;
+  text-transform: lowercase;
+}
+
+table {
+  border-radius: 30px;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.65);
+  color: black;
+  width: 700px;
+  font-family: "pixel";
+  margin: auto;
+  display: block;
+  height: 500px;
+  overflow-y: scroll;
+}
+
+
+th, td {
+  padding-top: 15px;
+  padding-bottom: 20px;
+  padding-left: 60px;
+  padding-right: 50px;
+  font-family: "pixel";
+  font-weight: lighter;
+  text-align: left;
+}
+
+
+#view{
+  padding: 0;
+  justify-content: center;
+
+}
+
+#content-add {
+  align-self: start;
+  margin-bottom: 10px;
+}
+
+#content {
+  float: left;
+}
+
+div#form-container {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+div#table-container {
+  width: 800px;
+  height: 600px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.30);
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.ex-form{
+  padding-bottom: 10px;
+}
+
+div#scroll {
+  border-radius: 50px;
+}
+
+div#session {
+  display: inline-block;
+  text-align: left;
+}
+
+@font-face {
+    font-family: "pixel";
+    src: url("fonts/RedHatMono-VariableFont_wght.ttf");
+}
+
+div#lw {
+  color: #FFF;
+  text-align: center;
+  font-family: "pixel";
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+div#view-session {
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: auto;
+  padding: 5px;
+  width: 50%;
+  color: white;
+}
+
+div#ex-update-form {
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 15px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 15px;
+  text-align: left;
+}
+
+div#test {
+  text-align: right;
+  display: inline-block;
+}
+
+form {
+  border-radius: 30px;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.65);
+  box-sizing: border-box;
+  color: black;
+  width:45%;
+  margin: auto;
+  padding: 2rem;
+  gap: 5rem;
+  height: 500px;
+  overflow-y: auto;
+}
+
+.del {
+  border-radius: 30px;
+  border-collapse: collapse;
+  background: none;
+  box-sizing: border-box;
+  color: black;
+  width:45%;
+  margin: auto;
+  padding: 2rem;
+  gap: 5rem;
+  height: 500px;
+  overflow-y: auto;
+}
+
+.add{
+  height: 300px;
+}
+
+.login{
+  height: 150px;
+}
+
+.form-control{
+  color: black;
+  width: 100%;
+  margin: auto;
+}
+
+.button {
+  background: white;
+  border-radius: 50px;
+  border: none;
+  color: black;
+  padding: 3px 10px;
+  text-decoration: none;
+  font-size: 10px;
+}
+
+button#home {
+  position:absolute;
+  top:0;
+  left:0;
+}
+
+form#logout-form{
+  background: none;
+  height: 3px;
+  padding-left: .5px;
+  padding-top: .05px;
+  overflow-y: clip;
+  width: 0;
+}
+
+#login{
+  position: absolute;
+  top: 0;
+  left: 0;
+}

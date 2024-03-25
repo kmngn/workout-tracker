@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <link href="../static/index.css" type="text/css" rel="stylesheet" media="all"/>
+    <title>All Sessions:</title>
+</head>
+
+<div>
+    <img src="../static/sessions-logo.png" alt="logo" width="350"/>
+</div>
+
+<div id="content-add">
+    <button type="button" class="button" onclick="window.location.href = '/log-session';" value="Redirect">add a session</button>
+</div>
+
+<table class="center">
+    <tr>
+        <th>♡</th>
+        <th>name</th>
+        <th>date</th>
+        <th>duration</th>
+    </tr>
+    <tbody>
+
+    {% for session in sessions_data %}
+        <tr>
+            <td>
+                <button onclick="window.location.href = '{% url 'view_session' session_id=session.id %}';" type="button"
+                        class="button">VIEW
+                </button>
+                <button onclick="window.location.href = '{% url 'update_session' session_id=session.id %}';"
+                        type="button" class="button">EDIT
+                </button>
+            </td>
+            <td>{{ session.name }}</td>
+            <td>{{ session.date }}</td>
+            <td>{{ session.duration }} hr(s)
+            </td>
+        </tr>
+
+    {% endfor %}
+    </tbody>
+
+</table>
+{% if user.is_authenticated %}
+    <form id="logout-form" method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit" id="logout" class="button">logout</button>
+    </form>
+{% else %}
+    <li><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
+{% endif %}
+</body>
+</html>

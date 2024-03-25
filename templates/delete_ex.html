@@ -1,0 +1,9 @@
+<head>
+    <link href="../static/index.css" rel="stylesheet" media="all"/>
+    <title>Log Session:</title>
+</head>
+<form class="del" action="{% url 'exercise_del' exercise.id %}" method="post">
+    {% csrf_token %}
+    you're about to delete {{ exercise.ex_name }} <br><br>
+    <button type="submit"  class="button ">confirm</button>
+</form>

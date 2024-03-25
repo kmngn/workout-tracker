@@ -1,0 +1,50 @@
+<html lang="en">
+
+<head>
+    <link href="../static/view.css" rel="stylesheet" media="all"/>
+</head>
+<div id="summary">
+    <button id="home" type="button" class="button" onclick="window.location.href = '/';" value="Redirect">HOME</button>
+    <div id="logo">
+        <img src="../static/sum.png" alt="logo" width="350"/><br>
+    </div>
+    {% csrf_token %}
+    <div id="outside">
+        <img src="../static/paint%20stroke.png" alt="logo" width="350"/>
+        <div id="inside">
+            &#9702;{{ session_data.name }}&#9702;<br>
+            {{ session_data.date }} <br>
+            {{ session_data.duration }} hrs<br>
+        </div>
+    </div>
+</div>
+<table>
+    <tr>
+        <th>exercise:</th>
+        <th>set:</th>
+        <th></th>
+    </tr>
+    {% for key, values in dict.items %}
+        {% for v1, v2, v3 in values %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ v1 }} lbs for {{ v2 }} reps</td>
+                <td>
+                    {% for id in v3 %}
+                        <button id="del" type="button" class="button"
+                                onclick="window.location.href = '{% url 'exercise_del' exercise_id=id %}';"
+                                value="Redirect">delete
+                        </button>
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+    {% endfor %}
+</table>
+<br>
+<button id="del" type="button" class="button"
+        onclick="window.location.href = '{% url 'session_del' session_id=session_data.id %}';"
+        value="Redirect">delete session
+</button>
+
+</html>
